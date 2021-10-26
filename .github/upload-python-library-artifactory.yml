@@ -1,0 +1,21 @@
+name: Upload Python Library to Artifactory - CEPSA
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7'
+    - name: Upload Python Library to Artifactory
+      uses: cepsadigital/github-action-devops-python-upload-artifactory@1.0.0
+      with:
+        repository-name: td-pypi
+        artifactory-user: ${{ secrets.TD_ARTIFACTORY_USER }}
+        artifactory-psw: ${{ secrets.TD_ARTIFACTORY_PSW }}
+        artifactory-host: https://cepsa.jfrog.io

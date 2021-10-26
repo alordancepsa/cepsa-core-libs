@@ -1,0 +1,4 @@
+pandas
+numpy
+s3fs
+jupyter
